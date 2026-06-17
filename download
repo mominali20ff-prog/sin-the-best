@@ -1,0 +1,49 @@
+import discord
+from datetime import datetime, timezone
+from config import EMBED_COLOR
+
+
+def base_embed(title: str = None, description: str = None, color: int = None) -> discord.Embed:
+    embed = discord.Embed(
+        title=title,
+        description=description,
+        color=color if color is not None else EMBED_COLOR,
+        timestamp=datetime.now(timezone.utc),
+    )
+    return embed
+
+
+def success_embed(description: str, title: str = "Success") -> discord.Embed:
+    return discord.Embed(
+        title=f"✅ {title}",
+        description=description,
+        color=0x57F287,
+        timestamp=datetime.now(timezone.utc),
+    )
+
+
+def error_embed(description: str, title: str = "Error") -> discord.Embed:
+    return discord.Embed(
+        title=f"❌ {title}",
+        description=description,
+        color=0xED4245,
+        timestamp=datetime.now(timezone.utc),
+    )
+
+
+def info_embed(description: str, title: str = "Info") -> discord.Embed:
+    return discord.Embed(
+        title=f"ℹ️ {title}",
+        description=description,
+        color=0x5865F2,
+        timestamp=datetime.now(timezone.utc),
+    )
+
+
+def warning_embed(description: str, title: str = "Warning") -> discord.Embed:
+    return discord.Embed(
+        title=f"⚠️ {title}",
+        description=description,
+        color=0xFEE75C,
+        timestamp=datetime.now(timezone.utc),
+    )
